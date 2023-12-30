@@ -2,26 +2,160 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+h1, h2 {
+  color: hsl(292, 42%, 14%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+h1 {
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.1em;
+  line-height: 1.2em;
+}
+
+p {
+  color: hsl(292, 16%, 49%);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1,.2em;
+}
+
+.question {
+  border-top: 1px solid rgba(128, 128, 128, 0.117);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.117);
+  padding: 20px 0;
+}
+
+.question:first-child {
+  border-top: none;
+}
+
+.question:last-child {
+  border-bottom: none;
+}
+
+.bg-white {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.bg-light-pink {
+  background-color: #f9eeff;
+}
+
+.slice {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  background-color: #f9eeff;
+}
+
+.slice::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 300px;
+  background: url('/background-pattern-desktop.svg') no-repeat center top;
+  background-size: 100%;
+}
+
+
+.wrapper {
+  height: auto;
+  max-height: 95vh;
+  overflow-y: auto;
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  z-index: 2;
+}
+
+.card {
+  padding: 40px;
+  border-radius: 15px;
+}
+
+.card h1 {
+  position: relative;
+  padding-left: 70px;
+}
+
+.card h1::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: url("/icon-star.svg") no-repeat center center;
+}
+
+.card .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.card .content h2::after {
+  content: "";
+  background: url('/icon-minus.svg') no-repeat center center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.card .content.hide h2::after {
+  background: url('/icon-plus.svg') no-repeat center center;
+}
+
+.card .content h2 {
+  position: relative;
+  margin-bottom: 10px;
+  padding-right: 25px;
+}
+
+.card .content p {
+  opacity: 1;
+  overflow: visible;
+}
+
+.card .content.hide p {
+  overflow: hidden;
+}
+
+.card .content.hide h2 {
+  margin-bottom: 0;
+}
+
+
+/* Mobile resolution */
+@media screen and (max-width: 680px) {
+
+  .slice::after {
+    background: url('/background-pattern-mobile.svg') no-repeat top;
+    background-size: 100%;
   }
-}
+  
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
